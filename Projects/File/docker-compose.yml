@@ -1,0 +1,22 @@
+version: '3'
+services:
+  file:
+    image: filebrowser/filebrowser
+    ports:
+      - "1776:80"
+    volumes:
+      - /mnt/external:/srv
+      - /mnt/external/services/file/config/settings.json:/config/settings.json
+      - /mnt/external/services/file/config:/config
+    networks:
+      zf-network:
+        ipv4_address: 172.18.0.2
+    hostname: file
+    container_name: file
+    environment:
+      - FB_BASEURL=/filebrowser
+    restart: always
+
+networks:
+  zf-network:
+    external: true

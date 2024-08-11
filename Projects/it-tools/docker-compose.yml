@@ -1,0 +1,17 @@
+version: '3.3'
+
+services:
+  it-tools:
+    image: corentinth/it-tools
+    container_name: it-tools
+    hostname: it-tools
+    restart: unless-stopped
+    ports:
+      - 8005:80/tcp
+    networks:
+      zf-network:
+        ipv4_address: 172.18.0.15
+
+networks:
+  zf-network:
+    external: true
